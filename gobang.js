@@ -5,7 +5,7 @@ class gobangState {
 
         if (map) {
             for (let i = 0; i < map.length; i++) {
-                this._map[i] = [...map[i]];
+                this._map[i] = [...map[i]];//深拷贝
             }
         } else {
             for (let i = 0; i < 15; i++) {
@@ -155,18 +155,17 @@ class gobangView {
 
             }
         }
-        let btn = document.createElement("button");         
-            btn.style.width="50px";
-            btn.style.height="50px";
-            btn.textContent="regret";
-            btn.addEventListener("click",event =>{
-                this._game.regret();
-                this.render();
-            });
-            this._container.appendChild(btn);
+        let btn = document.createElement("button");
+        btn.style.width = "50px";
+        btn.style.height = "50px";
+        btn.textContent = "regret"
+        btn.addEventListener("click", event => {
+            this._game.regret();
+            this.render();
+        });
+        this._container.appendChild(btn)
     }
 }
 let container = document.getElementById("container");
 let game = new gobangGame();
 (new gobangView(container,game)).render();
-// (new gobangView(container)).render();
